@@ -1,0 +1,30 @@
+﻿spring:
+  profiles:
+    active:
+      - dev
+---
+spring:
+  profiles: dev
+  application:
+    name: MYDOMETEST
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mytest?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+
+server:
+  port: 8003
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: MYDOMETEST
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+---
+spring:
+     profiles: test
+     application:
+       name: dome-service-config-test
