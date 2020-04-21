@@ -1,0 +1,27 @@
+﻿spring:
+  profiles: dome-service-client
+  application:
+    name: MYDOMETEST
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mytest?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+
+server:
+  port: 8002
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: MYDOMETEST-hystrix-nbs
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/
+#    register-with-eureka: false
+#    fetch-registry: false
+info:
+  app.name: dome-01-8001
+  company.name: www.wyf.cn
+  build.artfacId: $project.artifactId$
+  build.version: $project.version$
