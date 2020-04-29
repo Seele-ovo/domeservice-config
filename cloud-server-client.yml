@@ -1,0 +1,16 @@
+﻿server:
+  port: 8072
+
+spring:
+  profiles: myclient
+  application:
+    name: client
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6002/eureka/
+
+feign:
+  hystrix:
+    enabled: true
