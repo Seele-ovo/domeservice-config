@@ -1,0 +1,30 @@
+﻿spring:
+  profiles: cloud-gw
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: business-account
+          uri: lb://CLOUD-SERVER-BLOG #lb://服务名
+          predicates:
+            - Path=/**
+          filters:
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
+#        - id: business-account
+#          uri: lb://CLOUD-SERVER-BLOG
+#          predicates:
+#            - Path=/account/get
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:6002/eureka/
+server:
+  port: 9850
